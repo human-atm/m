@@ -1,0 +1,55 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/css3/user-interface";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800);
+
+
+* {
+    // Prevents the 'save image' dialog when a user holds a link or image
+    -webkit-touch-callout: none;
+    // Prevents link highlighting
+    -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+    // Prevent safari from resizing our text
+    -webkit-text-size-adjust: none;
+    // Making the box model not suck
+    @include box-sizing(border-box);
+    @include user-select(none);
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+
+  font-family: Helvetica;
+  font-weight: 300;
+}
+
+.page {
+
+}
+
+#launch-page {
+
+}
+
+#request-page {
+
+}
+
+#lenders-page {
+
+}
+
+#notification-page {
+
+}
+
+#meetup-page {
+
+}
+
+#payment-page {
+
+}

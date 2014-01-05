@@ -1,0 +1,75 @@
+include mixins/asset-mixins
+include mixins/asset-mixins-angular
+include mixins/meta-tag-mixins
+
+
+!!!
+html(lang='en', ng-app="m")
+
+  head
+    title M
+
+    block meta
+      //- include includes/mobile-meta-tags
+      meta(charset="utf-8")
+      //- meta(name="google-site-verification", content="<GOOGLE ANALYTICS API KEY>")
+      mixin meta-author('Banana Llama')
+      mixin meta-description('AT&T Hackathon Las Vegas 2013')
+
+    block css
+      mixin css("default")
+
+    block js
+      mixin js-lib("jquery")
+      mixin js-lib("lodash")
+      mixin js-lib("angular")
+      mixin js-lib("angular.ui")
+      mixin js-lib("moment")
+      mixin js-lib("moment.range")
+
+    block app
+        mixin app-core("app")
+        mixin app-controller('main')
+        //- mixin app-directive('foo')
+        //- mixin app-service('bar')
+
+
+  body(ng-controller="MainController")
+
+    header
+      h1 Dat App (selected page is <b>{{ selectedPage}}</b>)
+      nav: ul
+        li: a(href="#", ng-click="setSelectedPage('launch')")
+          | launch page
+        li: a(href="#", ng-click="setSelectedPage('request')")
+          | request page
+        li: a(href="#", ng-click="setSelectedPage('lenders')")
+          | lenders page
+        li: a(href="#", ng-click="setSelectedPage('notification')")
+          | notification page
+        li: a(href="#", ng-click="setSelectedPage('meetup')")
+          | meetup page
+        li: a(href="#", ng-click="setSelectedPage('payment')")
+          | payment page
+
+    hr
+
+    section.pages(ng-switch="selectedPage")
+
+      section.page#launch-page(ng-switch-when="launch")
+        h1 Launch Page
+
+      section.page#request-page(ng-switch-when="request")
+        h1 Request Page
+
+      section.page#lenders-page(ng-switch-when="lenders")
+        h1 Lenders Page
+
+      section.page#notification-page(ng-switch-when="notification")
+        h1 Notification Page
+
+      section.page#meetup-page(ng-switch-when="meetup")
+        h1 Meetup Page
+
+      section.page#payment-page(ng-switch-when="payment")
+        h1 Payment Page
