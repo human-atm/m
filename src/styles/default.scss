@@ -31,7 +31,6 @@ html, body {
   height: 568px;
   left: 50%;
   margin-left: -160px;
-  top: 150px;
 
   position: absolute;
   background: #232323;
@@ -46,12 +45,11 @@ html, body {
   top: 140px;
   width: 100%;
 }
-#launch-page h1 {
+.logo {
   display: block;
-  width: 100%;
+  width: 50px;
   font-size: 48px;
   color: #f3f3f3;
-  font-family: "Hoelfer Text";
   margin-left: 40px;
 }
 #launch-page h2 {
@@ -64,44 +62,102 @@ html, body {
   letter-spacing: 1px;
 }
 
-#request-page h1 {
+
+#request-page {
+  background: #232323;
+  position: relative;
+  overflow: hidden;
+}
+
+#request-page .logo {
   position: absolute;
-  top: 40px;
-  left: 40px;
+  top: 200px;
   color: #f3f3f3;
   font-family: "Hoelfer Text";
   font-size: 48px;
+  z-index: 3;
+  display: none;
 }
+
+#request-page .black {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #232323;
+  z-index: 2;
+}
+
 #request-page h2 {
   position: absolute;
-  top: 120px;
+  top: 275px;
   left: 40px;
   color: #f3f3f3;
   font-size: 18px;
   letter-spacing: 1px;
+  z-index: 3;
 }
+
+#request-page .page-head {
+  position: absolute;
+  width: 400px;
+}
+
+h2.first, h2.second {
+  display: none;
+}
+
 #request-page .request-buttons {
   position: absolute;
   top: 182px;
+  margin-left: -250px;
 }
+
 #request-page .request-buttons div {
+  position: relative;
   height: 85px;
   margin-bottom: 35px;
   background-color: #3cb66a;
   width: 250px;
   border-radius: 0 3px 3px 0;
   color: #f3f3f3;
-  line-height: 80px;
+  line-height: 85px;
   font-size: 36px;
   padding-left: 32px;
   font-weight: 600;
   letter-spacing: 2px;
+  box-shadow: 0 5px 0 #278944;
+}
+
+#request-page .request-buttons div:active {
+  background-color: #278944;
+  color: #ccc;
+  box-shadow: 0 5px 0 #1d6833, inset -3px 3px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 #pending-page p {
 }
 
 #pending-page .cancel-button {
+}
+
+#searching-page {
+  background-color: #8da;
+  position: relative;
+}
+
+h1.status {
+  position: absolute;
+  top: 80px;
+  left: 68px;
+  color: #f3f3f3;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.atm-search-single {
+  width: 100%;
 }
 
 #notification-page {
@@ -111,7 +167,9 @@ html, body {
 #meetup-page {
   background-color: #8da;
   position: absolute;
+  overflow: hidden
 }
+
 #meetup-page .pulldown {
   width: 300px;
   margin: 0 auto;
@@ -125,17 +183,35 @@ html, body {
   height: 18px;
   margin-top: 6px;
 }
-#meetup-page .pay {
+.atm-drop {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background-color: #000;
+  top: -70px;
+  left: 50%;
+  margin-left: -32px;
+  width: 64px;
+}
+
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  background: #232323;
+  color: #f3f3f3;
+}
+
+.white-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #f3f3f3;
   width: 100px;
   height: 40px;
-  color: #f3f3f3;
+  color: #232323;
   text-align: center;
   line-height: 40px;
   font-weight: 600;
+  border-radius: 3px;
 }
 
 #payment-page {

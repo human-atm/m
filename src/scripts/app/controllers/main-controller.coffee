@@ -1,5 +1,5 @@
-app.controller 'MainController', ($scope, $log, $location, AttAPI) ->
-    $scope.selectedPage = 'launch'
+app.controller 'MainController', ($scope, $log, $location) ->
+    $scope.selectedPage = 'request'
 
     $scope.setPage = (page) ->
         $log.info "Selecting page `#{page}`."

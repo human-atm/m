@@ -26,6 +26,7 @@ html(lang='en', ng-app="m")
       mixin js-lib("angular.ui")
       mixin js-lib("moment")
       mixin js-lib("moment.range")
+      mixin js-lib("easing")
 
 
     block app
@@ -40,12 +41,10 @@ html(lang='en', ng-app="m")
     header
       h1 Dat App (selected page is <b>{{ selectedPage}}</b>)
       nav: ul
-        li: a(href="#", ng-click="setPage('launch')")
-          | launch page
         li: a(href="#", ng-click="setPage('request')")
           | request page
-        li: a(href="#", ng-click="setPage('pending')")
-          | pending page
+        li: a(href="#", ng-click="setPage('searching')")
+          | searching page
         li: a(href="#", ng-click="setPage('notification')")
           | notification page
         li: a(href="#", ng-click="setPage('meetup')")
@@ -57,29 +56,36 @@ html(lang='en', ng-app="m")
 
     section.pages(ng-switch="selectedPage")
 
-      section.page#launch-page(ng-switch-when="launch")
-        div.launch-content
-          h1 M
-          h2 Your personal ATM.
+      //- section.page#launch-page(ng-switch-when="launch")
+      //-   div.launch-content
+      //-     img.logo(src="/assets/images/logo-white.svg")
+      //-     h2 Your personal ATM.
 
-      section.page.request-animation#request-page(ng-switch-when="request")
-        h2 How much cash?
+
+      section.page#request-page.requestAnimation(ng-switch-when="request")
+        div.page-head
+          img.logo(src="/assets/images/logo-white.svg")
+          h2.first Your personal ATM.
+          div.black
+          h2.second How much cash?
         .request-buttons
           div(ng-repeat="amount in pages.request.requestAmounts"
             , ng-click="pages.request.makeRequest(amount)")
             | ${{ amount }}
 
-      section.page#pending-page(ng-switch-when="pending")
-        p.pending-status Your request has been sent to 6 people.
-        div.cancel-button
+      section.page#searching-page(ng-switch-when="searching")
+        h1.status Finding you $20 ...
+        img.atm-search-single(src="/assets/images/atm-drop-single.gif")
+        div.bottom-bar
+          div.white-button Cancel
 
       section.page#notification-page(ng-switch-when="notification")
         h1 Notification Page
 
-      section.page#meetup-page(ng-switch-when="meetup")
-        div.pulldown
-          img(src="/assets/images/pulldown-icon.svg")
-        div.pay PAY
+      section.page#meetup-page.drop-pin(ng-switch-when="meetup")
+        img.atm-drop(src="/assets/images/atm-drop.gif")
+        div.bottom-bar
+          div.white-button Pay
 
       section.page#payment-page(ng-switch-when="payment")
         h1 Payment Page
