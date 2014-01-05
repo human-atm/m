@@ -27,15 +27,44 @@ html, body {
 }
 
 .page {
-
+  width: 320px;
+  height: 568px;
+  margin: 0 auto;
 }
 
 #launch-page {
-
+  
 }
 
-#request-page {
-
+#request-page * {
+  font-family: "Open Sans";
+}
+#request-page h1 {
+  display: block;
+  width: 100%;
+  height: 58px;
+  background-color: #eee;
+  color: #3cb66a;
+  font-weight: 600;
+  text-align: center;
+  line-height: 58px;
+}
+#request-page .request-buttons div {
+  height: 170px;
+  color: #eee;
+  text-align: center;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 170px;
+}
+#request-page .request-buttons div:nth-child(1) {
+  background-color: #3cb66a;
+}
+#request-page .request-buttons div:nth-child(2) {
+  background-color: #38a860;
+}
+#request-page .request-buttons div:nth-child(3) {
+  background-color: #369a5b;
 }
 
 #lenders-page {

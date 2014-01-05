@@ -62,13 +62,12 @@ html(lang='en', ng-app="m")
       section.page#request-page(ng-switch-when="request")
         h1 How much do you need?
         .request-buttons
-          button(ng-repeat="amount in pages.request.requestAmounts"
+          div(ng-repeat="amount in pages.request.requestAmounts"
             , ng-click="pages.request.makeRequest(amount)")
-            | $ {{ amount }}
+            | ${{ amount }}
 
       //- section.page#lenders-page(ng-switch-when="lenders")
       //-   h1 Lenders Page
-
 
       section.page#notification-page(ng-switch-when="notification")
         h1 Notification Page
