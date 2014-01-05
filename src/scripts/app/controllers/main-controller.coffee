@@ -1,7 +1,7 @@
 app.controller 'MainController', ($scope, $log, $location, User) ->
     User.init()
 
-    $scope.selectedPage = 'launch'
+    $scope.selectedPage = 'request'
 
     $scope.setPage = (page) ->
         $log.info "Selecting page `#{page}`."
