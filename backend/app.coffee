@@ -85,7 +85,6 @@ class PeepsFeatureLayerAPI
 
 
 
-
 RequestController = ->
     request = null
     createRequest: (peepId, amount) ->
@@ -160,6 +159,17 @@ app.post "/peeps/:id", (req, res, next) ->
     console.log "Updating peep `#{id}` with location:", location
     peepsApi.updatePeep(id, location).then (peep) ->
         res.send peep
+
+
+gimbal = 0
+app.post "/gimbal", (req, res, next) ->
+    gimbal = req.body.value
+    console.log "Gimbal updated:", gimbal
+    gimbal = parseInt(gimbal)
+    res.send 200, 'thanks bro'
+
+app.get "/gimbal", (req, res, next) ->
+    res.send 200, {value:gimbal}
 
 
 console.log "server online, bro"
