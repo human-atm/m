@@ -1,6 +1,7 @@
 
 @app = app = angular.module 'm', [
     'ngAnimate'
+    'geolocation'
 ]
 
 # Allows CORS

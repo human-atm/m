@@ -25,6 +25,7 @@ html(lang='en', ng-app="m")
       mixin js-lib("lodash")
       mixin js-lib("angular")
       mixin js-lib("angular.ui")
+      mixin js-lib("angular.geolocation")
       mixin js-lib("moment")
       mixin js-lib("moment.range")
       mixin js-lib("easing")
@@ -33,8 +34,9 @@ html(lang='en', ng-app="m")
     block app
       mixin app-core("app")
       mixin app-controller('main')
-      //- mixin app-directive('foo')
-      //- mixin app-service('bar')
+      mixin app-service("geolocation")
+      mixin app-service("user")
+      mixin app-service("m-api")
       mixin js-lib("animation-directive")
       :coffeescript
         app.directive 'searchingPage', ->
@@ -63,6 +65,7 @@ html(lang='en', ng-app="m")
               })
               meetupMap.addLayer(featureLayer);
             );
+
 
   body(ng-controller="MainController")
 
