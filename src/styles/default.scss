@@ -143,12 +143,19 @@ h2.first, h2.second {
 }
 
 #searching-page {
-  background-color: #8da;
   position: relative;
 }
-
-h1.status {
+#searching-page #searchingMap {
   position: absolute;
+  z-index: 0;
+  padding: 0;
+  margin: 0;
+  height: 508px;
+  width: 100%;
+}
+#searching-page h1.status {
+  position: absolute;
+  z-index: 10;
   top: 80px;
   left: 68px;
   color: #f3f3f3;
@@ -157,20 +164,27 @@ h1.status {
   letter-spacing: 1px;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
-
-.atm-search-single {
-  width: 100%;
-}
-
-.notification {
+#searching-page .black {
   position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+#searching-page .atm-search-single {
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+}
+#searching-page .notification {
+  position: absolute;
+  z-index: 9;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);  
   display: none;
 }
-
-.notification-box {
+#searching-page .notification-box {
   position: relative;
   top: 180px;
   left: 50%;
@@ -188,26 +202,20 @@ h1.status {
 }
 
 #meetup-page {
-  background-color: #8da;
   position: absolute;
   overflow: hidden
 }
-
-#meetup-page .pulldown {
-  width: 300px;
-  margin: 0 auto;
-  height: 30px;
-  background-color: #f3f3f3;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.2);
-  text-align: center;
-}
-#meetup-page .pulldown img {
-  width: 18px;
-  height: 18px;
-  margin-top: 6px;
-}
-.atm-drop {
+#meetup-page #meetupMap {
   position: absolute;
+  z-index: 2;
+  padding: 0;
+  margin: 0;
+  height: 508px;
+  width: 100%;
+}
+#meetup-page .atm-drop {
+  position: absolute;
+  z-index: 5;
   top: -70px;
   left: 50%;
   margin-left: -32px;
@@ -267,13 +275,6 @@ h1.status {
   height: 100px;
   width: 100px;
   background-color: #a3f;
-}
-
-#mapDiv {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
 }
 
 .animation-fade {

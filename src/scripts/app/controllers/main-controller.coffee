@@ -4,11 +4,13 @@ app.controller 'MainController', ($scope, $log, $location) ->
     $scope.setPage = (page) ->
         $log.info "Selecting page `#{page}`."
         $scope.selectedPage = page
-        $scope.showMap = (page is 'map')
+        $scope.showSearchingMap = (page is 'searching')
+        $scope.showMeetupMap = (page is 'meetup')
 
-    $scope.showMap = false
+    $scope.showSearchingMap = false
+    $scope.showMeetupMap = false
 
-    $scope.requestedAmount = null 
+    $scope.requestedAmount = null
 
     $scope.pages =
         request:

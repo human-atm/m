@@ -37,19 +37,31 @@ html(lang='en', ng-app="m")
       //- mixin app-service('bar')
       mixin js-lib("animation-directive")
       :coffeescript
-        app.directive 'mapPage', ->
+        app.directive 'searchingPage', ->
           restrict: 'C'
           link: (scope, element) ->
-            console.log 'whut'
             require(["esri/map", "esri/layers/FeatureLayer", "dojo/domReady!"], (Map, FeatureLayer) ->
               url = "http://services2.arcgis.com/N5FMD52YG8VXSFle/arcgis/rest/services/peeps/FeatureServer/0";
               featureLayer = new FeatureLayer(url);
-              map = new Map("mapDiv", {
+              searchingMap = new Map("searchingMap", {
                 center: [-115.187, 36.118],
                 zoom: 15,
                 basemap: "streets"
               })
-              map.addLayer(featureLayer);
+              searchingMap.addLayer(featureLayer);
+            );
+        app.directive 'meetupPage', ->
+          restrict: 'C'
+          link: (scope, element) ->
+            require(["esri/map", "esri/layers/FeatureLayer", "dojo/domReady!"], (Map, FeatureLayer) ->
+              url = "http://services2.arcgis.com/N5FMD52YG8VXSFle/arcgis/rest/services/peeps/FeatureServer/0";
+              featureLayer = new FeatureLayer(url);
+              meetupMap = new Map("meetupMap", {
+                center: [-115.187, 36.118],
+                zoom: 15,
+                basemap: "streets"
+              })
+              meetupMap.addLayer(featureLayer);
             );
 
   body(ng-controller="MainController")
@@ -74,12 +86,6 @@ html(lang='en', ng-app="m")
 
     section.pages(ng-switch="selectedPage")
 
-      //- section.page#launch-page(ng-switch-when="launch")
-      //-   div.launch-content
-      //-     img.logo(src="/assets/images/logo-white.svg")
-      //-     h2 Your personal ATM.
-
-
       section.page#request-page.requestAnimation(ng-switch-when="request")
         div.page-head
           img.logo(src="/assets/images/logo-white.svg")
@@ -91,26 +97,26 @@ html(lang='en', ng-app="m")
             , ng-click="pages.request.makeRequest(amount)")
             | ${{ amount }}
 
-      section.page#searching-page.show-notification(ng-switch-when="searching")
+      section.page.searching-page#searching-page.show-notification(ng-switch-when="searching")
+        div#searchingMap(ng-show="showSearchingMap")
         div.notification
           div.notification-box
             h1 Andrew has accepted your request for ${{ requestedAmount }}!
             div.black-button.meetup(ng-click="pages.searching.meetup()")
               | Meetup
         h1.status Finding you ${{ requestedAmount }} ...
+        div.black
         img.atm-search-single(src="/assets/images/atm-drop-single.gif")
         div.bottom-bar
           div.white-button Cancel
 
-      section.page#meetup-page.drop-pin(ng-switch-when="meetup")
+      section.page.meetup-page#meetup-page.drop-pin(ng-switch-when="meetup")
+        div#meetupMap(ng-show="showMeetupMap")
         img.atm-drop(src="/assets/images/atm-drop.gif")
         div.bottom-bar
           h1.gimble 100m
           div.white-button.message Message
           div.white-button Pay
-
-      section.page.map-page#map-page(ng-switch-when="map")
-        div#mapDiv(ng-show="showMap")
 
       section.page#payment-page(ng-switch-when="payment")
         h1 Payment Page
