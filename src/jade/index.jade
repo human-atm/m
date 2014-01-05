@@ -36,6 +36,7 @@ html(lang='en', ng-app="m")
       mixin app-controller('main')
       mixin app-service("geolocation")
       mixin app-service("user")
+      mixin app-service("gimbal")
       mixin app-service("m-api")
       mixin js-lib("animation-directive")
       :coffeescript
@@ -124,7 +125,7 @@ html(lang='en', ng-app="m")
             div.black-button.okay-button(ng-click="pages.searching.meetup()")
               | Okay
         div.bottom-bar
-          h1.gimble 100m
+          h1.gimble {{ gimbalValue }}m
           div.white-button.message(ng-click="sendMessage()") Message
           div.white-button Pay
 

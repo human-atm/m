@@ -1,6 +1,6 @@
 
 app.service 'MAPI', ($http, geolocation) ->
-    url = "http://localhost:4444"
+    url = "http://llama.services.42debut.com"
 
     createPeep: (location) ->
         $http.post("#{url}/peeps", {location}).then (response) ->

@@ -1,5 +1,6 @@
-app.controller 'MainController', ($scope, $log, $location, User, AttAPI) ->
+app.controller 'MainController', ($scope, $log, $location, User, Gimbal, AttAPI) ->
     User.init()
+    Gimbal.init()
 
     $scope.selectedPage = 'request'
 
@@ -13,6 +14,12 @@ app.controller 'MainController', ($scope, $log, $location, User, AttAPI) ->
     $scope.showMeetupMap = false
 
     $scope.requestedAmount = null
+
+    setInterval (->
+        $scope.gimbalValue = Gimbal.getValue()
+        $scope.$apply()
+    ), 100
+
 
     $scope.pages =
         request:
