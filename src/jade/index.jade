@@ -114,6 +114,11 @@ html(lang='en', ng-app="m")
       section.page.meetup-page#meetup-page.drop-pin(ng-switch-when="meetup")
         div#meetupMap(ng-show="showMeetupMap")
         img.atm-drop(src="/assets/images/atm-drop.gif")
+        div.notification
+          div.notification-box
+            h1 Text message sent! "See you on the stage ;)"
+            div.black-button.okay-button(ng-click="pages.searching.meetup()")
+              | Okay
         div.bottom-bar
           h1.gimble 100m
           div.white-button.message(ng-click="sendMessage()") Message
