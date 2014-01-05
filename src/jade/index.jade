@@ -62,7 +62,8 @@ html(lang='en', ng-app="m")
           h2 Your personal ATM.
 
       section.page#request-page(ng-switch-when="request")
-        h1 How much do you need?
+        h1 M
+        h2 How much cash?
         .request-buttons
           div(ng-repeat="amount in pages.request.requestAmounts"
             , ng-click="pages.request.makeRequest(amount)")
