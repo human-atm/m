@@ -24,16 +24,76 @@ html, body {
 
   font-family: Helvetica;
   font-weight: 300;
+  background: #3f3f3f;
+}
+
+.iphone {
+  position: absolute;
+  left: 50%;
+  margin-left: -223px;
 }
 
 .page {
   width: 320px;
   height: 568px;
+  top: 143px;
   left: 50%;
   margin-left: -160px;
 
   position: absolute;
   background: #232323;
+}
+
+.payment-screen {
+  background: #fff;
+}
+
+#payment-page .profile{
+  padding: 30px;
+}
+
+#payment-page .profile-pic {
+  display: inline-block;
+  border-radius: 3px;
+  width: 60px;
+  margin: 0 20px 0 0;
+  float: left;
+}
+
+#payment-page h1, #payment-page h2 {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 30px;
+}
+
+#payment-page .logo-black {
+  width: 50px;
+  margin: 40px 30px 20px 30px;  
+}
+
+#payment-page .profile h1 {
+  font-weight: 600;
+}
+
+#payment-page .payment-info {
+  position: relative;
+  width: 260px;
+  left: 50%;
+  margin: 0 0 0 -130px;
+  padding: 15px;
+  background: #f3f3f3;
+  border-radius: 3px;
+}
+
+#payment-page .visa {
+  width: 30px;
+  display: inline-block;
+  margin: 6px 10px 0 0;
+}
+
+#payment-page .total {
+    padding: 30px;
+    font-weight: 600;
 }
 
 .page * {
@@ -249,9 +309,24 @@ h2.first, h2.second {
 }
 
 .gimble {
+  position: absolute;
+  text-align: center;
+  height: 100px;
+  bottom: 80px;
+  left: 50%;
+  margin-left: -130px;
   line-height: 60px;
   padding-left: 10px;
+  width: 260px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 3px;
+  font-size: 80px;
+  color: #fff;
+  z-index: 9999;
+  line-height: 95px;
+  font-weight: 500;
 }
+
 .bottom-bar {
   position: absolute;
   bottom: 0;
@@ -259,6 +334,7 @@ h2.first, h2.second {
   width: 100%;
   background: #232323;
   color: #f3f3f3;
+
 }
 
 .white-button, .black-button {

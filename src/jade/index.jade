@@ -74,23 +74,26 @@ html(lang='en', ng-app="m")
 
   body(ng-controller="MainController")
 
-    header
-      h1 Dat App (selected page is <b>{{ selectedPage}}</b>)
-      nav: ul
-        li: a(href="#", ng-click="setPage('request')")
-          | request page
-        li: a(href="#", ng-click="setPage('searching')")
-          | searching page
-        li: a(href="#", ng-click="setPage('meetup')")
-          | meetup page
-        li: a(href="#", ng-click="setPage('payment')")
-          | payment page
-        li: a(href="#", ng-click="setPage('send')")
-          | send page
+    //- header
+    //-   h1 Dat App (selected page is <b>{{ selectedPage}}</b>)
+    //-   nav: ul
+    //-     li: a(href="#", ng-click="setPage('request')")
+    //-       | request page
+    //-     li: a(href="#", ng-click="setPage('searching')")
+    //-       | searching page
+    //-     li: a(href="#", ng-click="setPage('meetup')")
+    //-       | meetup page
+    //-     li: a(href="#", ng-click="setPage('payment')")
+    //-       | payment page
+    //-     li: a(href="#", ng-click="setPage('send')")
+    //-       | send page
 
-    hr
+    //- hr
+
 
     section.pages(ng-switch="selectedPage")
+
+      img.iphone(src="/assets/images/iphone5.png")
 
       section.page#request-page.requestAnimation(ng-switch-when="request")
         div.page-head
@@ -124,10 +127,20 @@ html(lang='en', ng-app="m")
             h1 Text message sent! "See you on the stage ;)"
             div.black-button.okay-button(ng-click="pages.searching.meetup()")
               | Okay
+        h1.gimble {{ gimbalValue }}ft
         div.bottom-bar
-          h1.gimble {{ gimbalValue }}ft
           div.white-button.message(ng-click="sendMessage()") Message
-          div.white-button Pay
+          div.white-button(ng-click="pages.meetup.pay()")
+            | Pay
 
-      section.page#payment-page(ng-switch-when="payment")
-        h1 Payment Page
+      section.page#payment-page.payment-screen(ng-switch-when="payment")
+        img.logo-black(src="/assets/images/logo-black.png")
+        div.profile
+          img.profile-pic(src="/assets/images/profile.jpg")
+          h1 Cathy Han
+          h2 cathy@42debut.com
+        div.payment-info
+          img.visa(src="/assets/images/visa.png")
+          h1 PERSONAL ****5678
+        h1.total Total: $22.00
+        div.black-button Confirm
