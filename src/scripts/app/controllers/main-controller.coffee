@@ -26,6 +26,8 @@ app.controller 'MainController', ($scope, $log, $location, User, AttAPI) ->
         searching:
             meetup: ->
                 $scope.setPage('meetup')
+        meetup:
+            pay: -> $scope.setPage('payment')
 
 
     $scope.getMessageList = () ->
