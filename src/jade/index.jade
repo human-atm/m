@@ -43,8 +43,8 @@ html(lang='en', ng-app="m")
           | launch page
         li: a(href="#", ng-click="setPage('request')")
           | request page
-        //- li: a(href="#", ng-click="setPage('lenders')")
-        //-   | lenders page
+        li: a(href="#", ng-click="setPage('pending')")
+          | pending page
         li: a(href="#", ng-click="setPage('notification')")
           | notification page
         li: a(href="#", ng-click="setPage('meetup')")
@@ -62,15 +62,15 @@ html(lang='en', ng-app="m")
           h2 Your personal ATM.
 
       section.page#request-page(ng-switch-when="request")
-        h1 M
         h2 How much cash?
         .request-buttons
           div(ng-repeat="amount in pages.request.requestAmounts"
             , ng-click="pages.request.makeRequest(amount)")
             | ${{ amount }}
 
-      //- section.page#lenders-page(ng-switch-when="lenders")
-      //-   h1 Lenders Page
+      section.page#pending-page(ng-switch-when="pending")
+        p.pending-status Your request has been sent to 6 people.
+        div.cancel-button
 
       section.page#notification-page(ng-switch-when="notification")
         h1 Notification Page

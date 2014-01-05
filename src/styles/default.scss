@@ -30,16 +30,14 @@ html, body {
   width: 320px;
   height: 568px;
   margin: 0 auto;
+  position: relative;
+  background: #232323;
 }
 
 .page * {
   font-family: "Open Sans";
 }
 
-#launch-page {
-  background: #232323;
-  position: relative;
-}
 #launch-page .launch-content {
   position: absolute;
   top: 140px;
@@ -63,10 +61,6 @@ html, body {
   letter-spacing: 1px;
 }
 
-#request-page {
-  background: #232323;
-  position: relative;
-}
 #request-page h1 {
   position: absolute;
   top: 40px;
@@ -101,8 +95,10 @@ html, body {
   letter-spacing: 2px;
 }
 
-#lenders-page {
+#pending-page p {
+}
 
+#pending-page .cancel-button {
 }
 
 #notification-page {
