@@ -48,7 +48,8 @@ html(lang='en', ng-app="m")
               searchingMap = new Map("searchingMap", {
                 center: [-115.187, 36.118],
                 zoom: 15,
-                basemap: "streets"
+                basemap: "streets",
+                refreshInterval: 100
               })
               searchingMap.addLayer(featureLayer);
             );
@@ -61,7 +62,8 @@ html(lang='en', ng-app="m")
               meetupMap = new Map("meetupMap", {
                 center: [-115.187, 36.118],
                 zoom: 15,
-                basemap: "streets"
+                basemap: "streets",
+                refreshInterval: 100
               })
               meetupMap.addLayer(featureLayer);
             );
