@@ -8,6 +8,8 @@ app.controller 'MainController', ($scope, $log, $location) ->
 
     $scope.showMap = false
 
+    $scope.requestedAmount = null 
+
     $scope.pages =
         request:
             requestAmounts: [20, 40, 60]
@@ -15,6 +17,12 @@ app.controller 'MainController', ($scope, $log, $location) ->
                 console.log "Request made for amount:", amount
                 amount = Math.max(0, parseInt(amount))
                 throw new Error("Amount must be of type `Number`.") if _.isNaN(amount)
+                $scope.setPage('searching')
+                $scope.requestedAmount = amount
+        searching:
+            meetup: ->
+                $scope.setPage('meetup')
+
 
     $scope.getMessageList = () ->
       AttAPI.getMessageList(->

@@ -61,8 +61,6 @@ html(lang='en', ng-app="m")
           | request page
         li: a(href="#", ng-click="setPage('searching')")
           | searching page
-        li: a(href="#", ng-click="setPage('notification')")
-          | notification page
         li: a(href="#", ng-click="setPage('meetup')")
           | meetup page
         li: a(href="#", ng-click="setPage('map')")
@@ -93,18 +91,22 @@ html(lang='en', ng-app="m")
             , ng-click="pages.request.makeRequest(amount)")
             | ${{ amount }}
 
-      section.page#searching-page(ng-switch-when="searching")
-        h1.status Finding you $20 ...
+      section.page#searching-page.show-notification(ng-switch-when="searching")
+        div.notification
+          div.notification-box
+            h1 Andrew has accepted your request for ${{ requestedAmount }}!
+            div.black-button.meetup(ng-click="pages.searching.meetup()")
+              | Meetup
+        h1.status Finding you ${{ requestedAmount }} ...
         img.atm-search-single(src="/assets/images/atm-drop-single.gif")
         div.bottom-bar
           div.white-button Cancel
 
-      section.page#notification-page(ng-switch-when="notification")
-        h1 Notification Page
-
       section.page#meetup-page.drop-pin(ng-switch-when="meetup")
         img.atm-drop(src="/assets/images/atm-drop.gif")
         div.bottom-bar
+          h1.gimble 100m
+          div.white-button.message Message
           div.white-button Pay
 
       section.page.map-page#map-page(ng-switch-when="map")

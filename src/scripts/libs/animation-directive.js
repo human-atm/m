@@ -27,9 +27,6 @@ app.directive('requestAnimation', function() { return {
     }
 }});
 
-
-
-
 app.directive('dropPin', function() { return {
 
     restrict: "C",
@@ -46,3 +43,17 @@ app.directive('dropPin', function() { return {
 
     }
 }});
+
+
+app.directive('showNotification', function() { return {
+
+    restrict: "C",
+    link: function (scope, element) {
+        $element = $(element);
+
+        $('.notification').delay(2000).fadeIn(300, 'easeInOutBack');
+
+    }
+}});
+
+
