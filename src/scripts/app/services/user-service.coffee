@@ -31,5 +31,8 @@ app.service 'User', (MAPI, geolocation, $rootScope) ->
     init: ->
         init().then -> startUpdateLoop()
 
+    getLocation: ->
+        state.location
+
     toObject: ->
         {id:state.id, location:state.location}

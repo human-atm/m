@@ -10,7 +10,7 @@ html(lang='en', ng-app="m")
     title M
 
     block meta
-      //- include includes/mobile-meta-tags
+      include includes/mobile-meta-tags
       meta(charset="utf-8")
       //- meta(name="google-site-verification", content="<GOOGLE ANALYTICS API KEY>")
       mixin meta-author('Banana Llama')
@@ -39,29 +39,31 @@ html(lang='en', ng-app="m")
       mixin app-service("m-api")
       mixin js-lib("animation-directive")
       :coffeescript
-        app.directive 'searchingPage', ->
+        app.directive 'searchingPage', (User) ->
           restrict: 'C'
           link: (scope, element) ->
             require(["esri/map", "esri/layers/FeatureLayer", "dojo/domReady!"], (Map, FeatureLayer) ->
               url = "http://services2.arcgis.com/N5FMD52YG8VXSFle/arcgis/rest/services/peeps/FeatureServer/0";
               featureLayer = new FeatureLayer(url);
+              location = User.getLocation()
               searchingMap = new Map("searchingMap", {
-                center: [-115.187, 36.118],
-                zoom: 15,
+                center: [location.longitude, location.latitude],
+                zoom: 21,
                 basemap: "streets",
                 refreshInterval: 100
               })
               searchingMap.addLayer(featureLayer);
             );
-        app.directive 'meetupPage', ->
+        app.directive 'meetupPage', (User) ->
           restrict: 'C'
           link: (scope, element) ->
             require(["esri/map", "esri/layers/FeatureLayer", "dojo/domReady!"], (Map, FeatureLayer) ->
               url = "http://services2.arcgis.com/N5FMD52YG8VXSFle/arcgis/rest/services/peeps/FeatureServer/0";
               featureLayer = new FeatureLayer(url);
+              location = User.getLocation()
               meetupMap = new Map("meetupMap", {
-                center: [-115.187, 36.118],
-                zoom: 15,
+                center: [location.longitude, location.latitude],
+                zoom: 21,
                 basemap: "streets",
                 refreshInterval: 100
               })
