@@ -39,17 +39,17 @@ html(lang='en', ng-app="m")
     header
       h1 Dat App (selected page is <b>{{ selectedPage}}</b>)
       nav: ul
-        li: a(href="#", ng-click="setSelectedPage('launch')")
+        li: a(href="#", ng-click="setPage('launch')")
           | launch page
-        li: a(href="#", ng-click="setSelectedPage('request')")
+        li: a(href="#", ng-click="setPage('request')")
           | request page
-        li: a(href="#", ng-click="setSelectedPage('lenders')")
-          | lenders page
-        li: a(href="#", ng-click="setSelectedPage('notification')")
+        //- li: a(href="#", ng-click="setPage('lenders')")
+        //-   | lenders page
+        li: a(href="#", ng-click="setPage('notification')")
           | notification page
-        li: a(href="#", ng-click="setSelectedPage('meetup')")
+        li: a(href="#", ng-click="setPage('meetup')")
           | meetup page
-        li: a(href="#", ng-click="setSelectedPage('payment')")
+        li: a(href="#", ng-click="setPage('payment')")
           | payment page
 
     hr
@@ -60,16 +60,23 @@ html(lang='en', ng-app="m")
         h1 Launch Page
 
       section.page#request-page(ng-switch-when="request")
-        h1 Request Page
+        h1 How much do you need?
+        .request-buttons
+          button(ng-repeat="amount in pages.request.requestAmounts"
+            , ng-click="pages.request.makeRequest(amount)")
+            | $ {{ amount }}
 
-      section.page#lenders-page(ng-switch-when="lenders")
-        h1 Lenders Page
+      //- section.page#lenders-page(ng-switch-when="lenders")
+      //-   h1 Lenders Page
+
 
       section.page#notification-page(ng-switch-when="notification")
         h1 Notification Page
 
+
       section.page#meetup-page(ng-switch-when="meetup")
         h1 Meetup Page
+
 
       section.page#payment-page(ng-switch-when="payment")
         h1 Payment Page
