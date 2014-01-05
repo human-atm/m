@@ -78,8 +78,6 @@ html(lang='en', ng-app="m")
           | searching page
         li: a(href="#", ng-click="setPage('meetup')")
           | meetup page
-        li: a(href="#", ng-click="setPage('map')")
-          | map page
         li: a(href="#", ng-click="setPage('payment')")
           | payment page
         li: a(href="#", ng-click="setPage('send')")
@@ -118,12 +116,8 @@ html(lang='en', ng-app="m")
         img.atm-drop(src="/assets/images/atm-drop.gif")
         div.bottom-bar
           h1.gimble 100m
-          div.white-button.message Message
+          div.white-button.message(ng-click="sendMessage()") Message
           div.white-button Pay
 
       section.page#payment-page(ng-switch-when="payment")
         h1 Payment Page
-
-      section.page#send-page(ng-switch-when="send")
-        div.getMessageListButton(ng-click="getMessageList()")
-        div.sendButton(ng-click="sendMessage()")
