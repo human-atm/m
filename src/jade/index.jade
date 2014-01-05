@@ -72,10 +72,10 @@ html(lang='en', ng-app="m")
       section.page#notification-page(ng-switch-when="notification")
         h1 Notification Page
 
-
       section.page#meetup-page(ng-switch-when="meetup")
-        h1 Meetup Page
-
+        div.pulldown
+          img(src="/assets/images/pulldown-icon.svg")
+        div.pay PAY
 
       section.page#payment-page(ng-switch-when="payment")
         h1 Payment Page

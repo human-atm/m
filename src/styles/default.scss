@@ -32,18 +32,18 @@ html, body {
   margin: 0 auto;
 }
 
-#launch-page {
-  
-}
-
-#request-page * {
+.page * {
   font-family: "Open Sans";
 }
+
+#launch-page {
+}
+
 #request-page h1 {
   display: block;
   width: 100%;
   height: 58px;
-  background-color: #eee;
+  background-color: #f3f3f3;
   color: #3cb66a;
   font-weight: 600;
   text-align: center;
@@ -51,7 +51,7 @@ html, body {
 }
 #request-page .request-buttons div {
   height: 170px;
-  color: #eee;
+  color: #f3f3f3;
   text-align: center;
   font-size: 64px;
   font-weight: 400;
@@ -76,7 +76,33 @@ html, body {
 }
 
 #meetup-page {
-
+  background-color: #8da;
+  position: relative;
+}
+#meetup-page .pulldown {
+  width: 300px;
+  margin: 0 auto;
+  height: 30px;
+  background-color: #f3f3f3;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+  text-align: center;
+}
+#meetup-page .pulldown img {
+  width: 18px;
+  height: 18px;
+  margin-top: 6px;
+}
+#meetup-page .pay {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: #000;
+  width: 100px;
+  height: 40px;
+  color: #f3f3f3;
+  text-align: center;
+  line-height: 40px;
+  font-weight: 600;
 }
 
 #payment-page {
