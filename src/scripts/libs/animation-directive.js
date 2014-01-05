@@ -41,6 +41,13 @@ app.directive('dropPin', function() { return {
 
         $('.atm-drop').delay(200).animate({top: '39%'}, 1500, 'easeOutBounce');
 
+        $('.message').on('click', function() {
+            $('#meetup-page .notification').fadeIn(400);
+        });
+
+        $('.okay-button, .notification').on('click', function() {
+            $('#meetup-page .notification').fadeOut(400);
+        });
     }
 }});
 

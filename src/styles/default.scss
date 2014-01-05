@@ -221,6 +221,33 @@ h2.first, h2.second {
   margin-left: -32px;
   width: 64px;
 }
+
+#meetup-page .notification {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); 
+  display: none; 
+}
+#meetup-page .notification-box {
+  position: relative;
+  top: 180px;
+  left: 50%;
+  margin-left: -125px;
+  width: 250px;
+  height: 130px;
+  background: #f3f3f3;
+  color: #232323;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 3px;
+  padding: 20px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 3px;
+  z-index: 99999;
+}
+
 .gimble {
   line-height: 60px;
   padding-left: 10px;

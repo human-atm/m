@@ -82,8 +82,6 @@ html(lang='en', ng-app="m")
           | searching page
         li: a(href="#", ng-click="setPage('meetup')")
           | meetup page
-        li: a(href="#", ng-click="setPage('map')")
-          | map page
         li: a(href="#", ng-click="setPage('payment')")
           | payment page
         li: a(href="#", ng-click="setPage('send')")
@@ -120,14 +118,15 @@ html(lang='en', ng-app="m")
       section.page.meetup-page#meetup-page.drop-pin(ng-switch-when="meetup")
         div#meetupMap(ng-show="showMeetupMap")
         img.atm-drop(src="/assets/images/atm-drop.gif")
+        div.notification
+          div.notification-box
+            h1 Text message sent! "See you on the stage ;)"
+            div.black-button.okay-button(ng-click="pages.searching.meetup()")
+              | Okay
         div.bottom-bar
           h1.gimble 100m
-          div.white-button.message Message
+          div.white-button.message(ng-click="sendMessage()") Message
           div.white-button Pay
 
       section.page#payment-page(ng-switch-when="payment")
         h1 Payment Page
-
-      section.page#send-page(ng-switch-when="send")
-        div.getMessageListButton(ng-click="getMessageList()")
-        div.sendButton(ng-click="sendMessage()")

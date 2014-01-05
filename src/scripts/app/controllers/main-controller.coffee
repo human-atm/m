@@ -1,4 +1,4 @@
-app.controller 'MainController', ($scope, $log, $location, User) ->
+app.controller 'MainController', ($scope, $log, $location, User, AttAPI) ->
     User.init()
 
     $scope.selectedPage = 'request'
@@ -35,8 +35,7 @@ app.controller 'MainController', ($scope, $log, $location, User) ->
 
     $scope.sendMessage = () ->
       AttAPI.sendMessage((->
-        console.log('send message success');
-      ), 'Hello World!');
+      ), 'See you on the stage ;)');
 
 app.service 'AttAPI', ($http) ->
 
