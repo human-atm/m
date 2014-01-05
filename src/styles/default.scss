@@ -29,8 +29,11 @@ html, body {
 .page {
   width: 320px;
   height: 568px;
-  margin: 0 auto;
-  position: relative;
+  left: 50%;
+  margin-left: -160px;
+  top: 150px;
+
+  position: absolute;
   background: #232323;
 }
 
@@ -107,7 +110,7 @@ html, body {
 
 #meetup-page {
   background-color: #8da;
-  position: relative;
+  position: absolute;
 }
 #meetup-page .pulldown {
   width: 300px;
@@ -137,4 +140,29 @@ html, body {
 
 #payment-page {
 
+}
+
+
+
+.animation-fade {
+
+    &.ng-enter, &.ng-leave {
+        @include transition(all 1s);
+    }
+
+    &.ng-enter {
+        opacity: 0;
+
+        &.ng-enter-active {
+            opacity: 1;
+        }
+    }
+
+    &.ng-leave {
+        opacity: 1;
+
+        &.ng-leave-active {
+            opacity: 0;
+        }
+    }
 }

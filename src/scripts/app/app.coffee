@@ -1,6 +1,6 @@
 
 @app = app = angular.module 'm', [
-    'ui'
+    'ngAnimate'
 ]
 
 # Allows CORS
