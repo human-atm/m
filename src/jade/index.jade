@@ -18,6 +18,7 @@ html(lang='en', ng-app="m")
 
     block css
       mixin css("default")
+      link(rel="stylesheet", type="text/css", href="/assets/js/libs/esri.css")
 
     block js
       mixin js-lib("jquery")
@@ -27,14 +28,29 @@ html(lang='en', ng-app="m")
       mixin js-lib("moment")
       mixin js-lib("moment.range")
       mixin js-lib("easing")
-
+      mixin js-lib("esri")
 
     block app
-        mixin app-core("app")
-        mixin app-controller('main')
-        //- mixin app-directive('foo')
-        //- mixin app-service('bar')
-        mixin js-lib("animation-directive")
+      mixin app-core("app")
+      mixin app-controller('main')
+      //- mixin app-directive('foo')
+      //- mixin app-service('bar')
+      mixin js-lib("animation-directive")
+      :coffeescript
+        app.directive 'mapPage', ->
+          restrict: 'C'
+          link: (scope, element) ->
+            console.log 'whut'
+            require(["esri/map", "esri/layers/FeatureLayer", "dojo/domReady!"], (Map, FeatureLayer) ->
+              url = "http://services2.arcgis.com/N5FMD52YG8VXSFle/arcgis/rest/services/peeps/FeatureServer/0";
+              featureLayer = new FeatureLayer(url);
+              map = new Map("mapDiv", {
+                center: [-115.187, 36.118],
+                zoom: 15,
+                basemap: "streets"
+              })
+              map.addLayer(featureLayer);
+            );
 
   body(ng-controller="MainController")
 
@@ -49,8 +65,12 @@ html(lang='en', ng-app="m")
           | notification page
         li: a(href="#", ng-click="setPage('meetup')")
           | meetup page
+        li: a(href="#", ng-click="setPage('map')")
+          | map page
         li: a(href="#", ng-click="setPage('payment')")
           | payment page
+        li: a(href="#", ng-click="setPage('send')")
+          | send page
 
     hr
 
@@ -87,5 +107,12 @@ html(lang='en', ng-app="m")
         div.bottom-bar
           div.white-button Pay
 
+      section.page.map-page#map-page(ng-switch-when="map")
+        div#mapDiv(ng-show="showMap")
+
       section.page#payment-page(ng-switch-when="payment")
         h1 Payment Page
+
+      section.page#send-page(ng-switch-when="send")
+        div.getMessageListButton(ng-click="getMessageList()")
+        div.sendButton(ng-click="sendMessage()")

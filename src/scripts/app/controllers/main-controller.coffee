@@ -4,6 +4,9 @@ app.controller 'MainController', ($scope, $log, $location) ->
     $scope.setPage = (page) ->
         $log.info "Selecting page `#{page}`."
         $scope.selectedPage = page
+        $scope.showMap = (page is 'map')
+
+    $scope.showMap = false
 
     $scope.pages =
         request:
@@ -13,6 +16,16 @@ app.controller 'MainController', ($scope, $log, $location) ->
                 amount = Math.max(0, parseInt(amount))
                 throw new Error("Amount must be of type `Number`.") if _.isNaN(amount)
 
+    $scope.getMessageList = () ->
+      AttAPI.getMessageList(->
+        console.log('get message list success');
+      );
+
+    $scope.sendMessage = () ->
+      AttAPI.sendMessage((->
+        console.log('send message success');
+      ), 'Hello World!');
+
 app.service 'AttAPI', ($http) ->
 
   _accessToken = 'sWKt5H0SpgTzjzVYgtyqelh6amoTAkSU'
@@ -20,9 +33,9 @@ app.service 'AttAPI', ($http) ->
   _makeRequest: (method, uri, callback) ->
     $http({
       method: method,
-      url: 'api.att.com' + uri,
+      url: 'https://api.att.com/myMessages/v2' + uri,
       headers: {
-        authorization: 'Bearer ' + this._accessToken,
+        authorization: 'Bearer ' + _accessToken,
         accept: 'application/json'
       }
     }).success(callback);
@@ -102,18 +115,18 @@ app.service 'AttAPI', ($http) ->
   sendMessage: (callback, message) ->
     $http({
       method: 'POST',
-      url: 'api.att.com/messages',
+      url: 'https://api.att.com/myMessages/v2/messages',
       data: {
         messageRequest: {
           addresses: [
             "tel:2067472615"
           ],
-          text: 'hello world'
+          text: message
         }
       },
       headers: {
         accept: 'application/json',
-        authorization: 'Bearer ' + this._accessToken,
+        authorization: 'Bearer ' + _accessToken,
         "content-type": 'application/json'
       }
     }).success(callback);
@@ -121,7 +134,7 @@ app.service 'AttAPI', ($http) ->
   updateMessage: (callback, messageID) ->
     $http({
       method: 'PUT',
-      url: 'api.att.com/messages/' + messageID;
+      url: 'https://api.att.com/myMessages/v2/messages/' + messageID;
       data: {
         message: {
           isUnread: true
@@ -129,7 +142,7 @@ app.service 'AttAPI', ($http) ->
       },
       headers: {
         accept: 'application/json',
-        authorization: 'Bearer ' + this._accessToken,
+        authorization: 'Bearer ' + _accessToken,
         "content-type": 'application/json'
       }
     }).success(callback);
@@ -142,13 +155,13 @@ app.service 'AttAPI', ($http) ->
     }) for messageID in messageIDs;
     $http({
       method: 'PUT',
-      url: 'api.att.com/messages/' + messageID;
+      url: 'https://api.att.com/myMessages/v2/messages/' + messageID;
       data: {
         messages: messageUpdates
       },
       headers: {
         accept: 'application/json',
-        authorization: 'Bearer ' + this._accessToken,
+        authorization: 'Bearer ' + _accessToken,
         "content-type": 'application/json'
       }
     }).success(callback);

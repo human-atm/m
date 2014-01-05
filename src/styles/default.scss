@@ -218,7 +218,23 @@ h1.status {
 
 }
 
+#send-page .sendButton {
+  height: 100px;
+  width: 100px;
+  background-color: #3af;
+}
+#send-page .getMessageListButton {
+  height: 100px;
+  width: 100px;
+  background-color: #a3f;
+}
 
+#mapDiv {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
 
 .animation-fade {
 
