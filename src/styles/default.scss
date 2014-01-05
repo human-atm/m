@@ -37,6 +37,29 @@ html, body {
 }
 
 #launch-page {
+  background: #232323;
+  position: relative;
+}
+#launch-page .launch-content {
+  position: absolute;
+  top: 140px;
+  width: 100%;
+}
+#launch-page h1 {
+  display: block;
+  width: 100%;
+  font-size: 48px;
+  color: #f3f3f3;
+  font-family: "Hoelfer Text";
+  margin-left: 40px;
+}
+#launch-page h2 {
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  color: #f3f3f3;
+  margin-top: 55px;
+  margin-left: 40px;
 }
 
 #request-page h1 {
