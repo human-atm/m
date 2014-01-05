@@ -14,16 +14,14 @@ app.directive('requestAnimation', function() { return {
                     });
                 });
             });
-            
+
             // $('.logo').delay(500).animate({top: '50px'}, 500)
             // $('.black, .first').fadeOut(400);
             //$(this).delay(500).animate({'top:100px'}, 400);
             //  $('.page-head').delay(500).animate({'top: 50px'}, 400, function () {
-            //     
+            //
             // });
         });
-       
-
     }
 }});
 
@@ -37,7 +35,6 @@ app.directive('dropPin', function() { return {
         // image.src = "/assets/images/atm-drop.gif";
 
         // $('.atm-drop').attr('src', atm-drop.gif);
-
 
         $('.atm-drop').delay(200).animate({top: '39%'}, 1500, 'easeOutBounce');
 
@@ -57,9 +54,8 @@ app.directive('showNotification', function() { return {
     restrict: "C",
     link: function (scope, element) {
         $element = $(element);
-
-        $('.notification').delay(2000).fadeIn(300, 'easeInOutBack');
-
+        $('.notification').delay(7000).fadeIn(300, 'easeInOutBack');
+        $('.atm-search-single').delay(7000).fadeOut(300);
     }
 }});
 
