@@ -6,6 +6,13 @@ Promise     = require 'bluebird'
 chance      = new (require 'chance')()
 
 
+app = express()
+server = require('http').createServer(app)
+io     = require('socket.io').listen(server)
+
+
+
+
 config =
     host:     process.env.M_HOST or '127.0.0.1'
     port:     process.env.M_PORT or 4444
@@ -98,7 +105,7 @@ RequestController = ->
         console.log "Request was accepted by `#{peepId}`."
 
 
-app = express()
+
 
 app.use express.json()
 app.use express.urlencoded()
@@ -161,12 +168,20 @@ app.post "/peeps/:id", (req, res, next) ->
         res.send peep
 
 
-gimbal = 0
+gimbal = -90
 app.post "/gimbal", (req, res, next) ->
     gimbal = req.body.value
-    console.log "Gimbal updated:", gimbal
+    console.log "GIMBAL UPDATED:", gimbal
     gimbal = parseInt(gimbal)
     res.send 200, 'thanks bro'
+
+
+io.sockets.on 'connection', (socket) ->
+    setInterval (->
+        console.log "sending gimbal value #{gimbal} to websocket."
+        socket.emit('gimbal', {value:gimbal})
+    ), 100
+
 
 app.get "/gimbal", (req, res, next) ->
     res.send 200, {value:gimbal}
