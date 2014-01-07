@@ -1,14 +1,23 @@
-# M - your personal ATM
+## m
 
-## client
+your personal ATM
 
-0. `gem install compass`
-1. `npm install -d`
-2. `npm install -g grunt-cli`
-3. `grunt run`
+#### client
 
-# server
+> `gem install compass`      <br>
+  `npm install -d`           <br>
+  `npm install -g grunt-cli` <br>
+  `grunt run`
 
-0. `cd ./backend`
-1. `npm install -d`
-2. `npm start`
+#### backend
+
+> `cd ./backend`    <br>
+  `npm install -d`  <br>
+  `npm start`
+
+
+#### qualcomm gimbal
+
+We built an iOS application (see `ios` folder) that pushes the gimbal value
+to the backend server. The client then calls the server's `/gimbal` endpoint
+to get that value. Bulletproof.
