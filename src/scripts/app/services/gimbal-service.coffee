@@ -1,23 +1,21 @@
 
 app.service 'Gimbal', ($http, $rootScope) ->
-    url = "http://llama.services.42debut.com/gimbal"
-    state = value:'∞'
+    url   = "http://llama.services.42debut.com/gimbal"
+    state = {value:'∞'}
 
     fetch = ->
         $http.get(url).then (response) ->
             value = response.data.value
-            return Math.floor Math.pow((-(parseInt(value) + 44) / 5.6), 2)
+            return Math.floor Math.pow((-(parseInt(value) + 46) / 5.0), 2)
 
     updateState = ->
-        $rootScope.$apply()
-        fetch().then (value) ->
+        cb = (value) ->
             state.value = value
-
-    startUpdateLoop = (interval) ->
-        setInterval updateState, interval
+            updateState()
+        fetch().then cb, (-> cb state.value)
 
     init: ->
-        startUpdateLoop(100)
+        updateState()
 
     getValue: ->
         state.value

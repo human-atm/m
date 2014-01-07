@@ -1,6 +1,5 @@
 app.controller 'MainController', ($scope, $log, $location, User, Gimbal, AttAPI) ->
     User.init()
-    Gimbal.init()
 
     $scope.selectedPage = 'request'
 
@@ -9,6 +8,9 @@ app.controller 'MainController', ($scope, $log, $location, User, Gimbal, AttAPI)
         $scope.selectedPage = page
         $scope.showSearchingMap = (page is 'searching')
         $scope.showMeetupMap = (page is 'meetup')
+
+        if $scope.showMeetupMap
+            Gimbal.init()
 
     $scope.showSearchingMap = false
     $scope.showMeetupMap = false

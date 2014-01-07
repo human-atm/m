@@ -40,6 +40,14 @@ html(lang='en', ng-app="m")
       mixin app-service("m-api")
       mixin js-lib("animation-directive")
       :coffeescript
+
+        app.directive 'mapOverlay', ($timeout) ->
+          restrict: 'C'
+          link: (scope, element) ->
+            $element = $(element)
+            $timeout ->
+              $element.addClass 'show'
+
         app.directive 'searchingPage', (User) ->
           restrict: 'C'
           link: (scope, element) ->
@@ -47,14 +55,16 @@ html(lang='en', ng-app="m")
               url = "http://services2.arcgis.com/N5FMD52YG8VXSFle/arcgis/rest/services/peeps/FeatureServer/0";
               featureLayer = new FeatureLayer(url);
               location = User.getLocation()
+              console.log "Map location:", location
               searchingMap = new Map("searchingMap", {
-                center: [location.longitude, location.latitude],
+                center: [-115.1938136, 36.1148510],
                 zoom: 21,
                 basemap: "streets",
                 refreshInterval: 100
               })
               searchingMap.addLayer(featureLayer);
             );
+
         app.directive 'meetupPage', (User) ->
           restrict: 'C'
           link: (scope, element) ->
@@ -62,8 +72,9 @@ html(lang='en', ng-app="m")
               url = "http://services2.arcgis.com/N5FMD52YG8VXSFle/arcgis/rest/services/peeps/FeatureServer/0";
               featureLayer = new FeatureLayer(url);
               location = User.getLocation()
+              console.log "Map location:", location
               meetupMap = new Map("meetupMap", {
-                center: [location.longitude, location.latitude],
+                center: [-115.1938136, 36.1149100],
                 zoom: 21,
                 basemap: "streets",
                 refreshInterval: 100
@@ -107,7 +118,8 @@ html(lang='en', ng-app="m")
             | ${{ amount }}
 
       section.page.searching-page#searching-page.show-notification(ng-switch-when="searching")
-        div#searchingMap(ng-show="showSearchingMap")
+        div.map#searchingMap(ng-show="showSearchingMap")
+        .map-overlay
         div.notification
           div.notification-box
             h1 Andrew has accepted your request for ${{ requestedAmount }}!
@@ -120,11 +132,12 @@ html(lang='en', ng-app="m")
           div.white-button Cancel
 
       section.page.meetup-page#meetup-page.drop-pin(ng-switch-when="meetup")
-        div#meetupMap(ng-show="showMeetupMap")
+        div.map#meetupMap(ng-show="showMeetupMap")
+        .map-overlay
         img.atm-drop(src="/assets/images/atm-drop.gif")
         div.notification
           div.notification-box
-            h1 Text message sent! "See you on the stage ;)"
+            h1 Text message sent!<br>"See you on the stage :)"
             div.black-button.okay-button(ng-click="pages.searching.meetup()")
               | Okay
         h1.gimble {{ gimbalValue }}ft

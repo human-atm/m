@@ -11,6 +11,7 @@ app.service 'User', (MAPI, geolocation, $rootScope) ->
     updateLocation = ->
         console.log "Updating user location."
         getLocation().then (location) ->
+            console.log "User location was updated."
             state.location = location
             MAPI.updatePeep state.id, state.location
 

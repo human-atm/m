@@ -6,21 +6,25 @@ app.directive('requestAnimation', function() { return {
         $element = $(element);
 
         $('.logo, .first').delay(600).fadeIn(500, function() {
-            $('.page-head').delay(800).animate({top: '-145px'}, 500, function() {
-                $('.black, .first').fadeOut(400);
-                $('.second').fadeIn(500, function() {
-                    $(".request-buttons div").each(function(index) {
-                        $(this).delay(300+index*100).animate({left: '250px'}, 200);
+
+            $element.click(function() {
+
+                $('.page-head').animate({top: '-145px'}, 500, function() {
+                    $('.black, .first').fadeOut(400);
+                    $('.second').fadeIn(500, function() {
+                        $(".request-buttons div").each(function(index) {
+                            $(this).delay(300+index*100).animate({left: '250px'}, 200);
+                        });
                     });
                 });
-            });
 
-            // $('.logo').delay(500).animate({top: '50px'}, 500)
-            // $('.black, .first').fadeOut(400);
-            //$(this).delay(500).animate({'top:100px'}, 400);
-            //  $('.page-head').delay(500).animate({'top: 50px'}, 400, function () {
-            //
-            // });
+                // $('.logo').delay(500).animate({top: '50px'}, 500)
+                // $('.black, .first').fadeOut(400);
+                //$(this).delay(500).animate({'top:100px'}, 400);
+                //  $('.page-head').delay(500).animate({'top: 50px'}, 400, function () {
+                //
+                // });
+            });
         });
     }
 }});

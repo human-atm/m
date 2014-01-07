@@ -24,7 +24,7 @@ html, body {
 
   font-family: Helvetica;
   font-weight: 300;
-  background: #3f3f3f;
+  background: #000;
 }
 
 .iphone {
@@ -68,7 +68,7 @@ html, body {
 
 #payment-page .logo-black {
   width: 50px;
-  margin: 40px 30px 20px 30px;  
+  margin: 40px 30px 20px 30px;
 }
 
 #payment-page .profile h1 {
@@ -241,7 +241,7 @@ h2.first, h2.second {
   z-index: 9;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);  
+  background: rgba(0, 0, 0, 0.6);
   display: none;
 }
 #searching-page .notification-box {
@@ -287,8 +287,8 @@ h2.first, h2.second {
   z-index: 999;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6); 
-  display: none; 
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
 }
 #meetup-page .notification-box {
   position: relative;
@@ -401,4 +401,21 @@ h2.first, h2.second {
             opacity: 0;
         }
     }
+}
+
+
+
+.map-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: black;
+  @include transition(opacity 1s);
+  opacity: 1;
+
+  &.show {
+    opacity: 0;
+  }
 }
