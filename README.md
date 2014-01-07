@@ -1,6 +1,6 @@
 ## m
 
-your personal ATM
+human to atm converter
 
 #### client
 
