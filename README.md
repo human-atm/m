@@ -19,6 +19,7 @@ human to atm converter
 #### qualcomm gimbal
 
 The iOS application (see `ios` folder) pushes the<br>
-gimbal's value to the `m` nodejs service. The `m`<br>
-client then polls the service's `/gimbal` endpoint<br>
-to retrieve the value. mad hax.
+gimbal's value to the `m` nodejs service.<br>
+
+The `m` client then polls the service's `/gimbal<br>
+endpoint to retrieve the value. mad hax.
