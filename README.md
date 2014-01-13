@@ -21,5 +21,5 @@ human to atm converter
 The iOS application (see `ios` folder) pushes the<br>
 gimbal's value to the `m` nodejs service.<br>
 
-The `m` client then polls the service's `/gimbal<br>
+The `m` client then polls the service's `/gimbal`<br>
 endpoint to retrieve the value. mad hax.
