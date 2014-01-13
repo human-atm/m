@@ -18,6 +18,5 @@ human to atm converter
 
 #### qualcomm gimbal
 
-We built an iOS application (see `ios` folder) that pushes the gimbal value
-to the backend server. The client then calls the server's `/gimbal` endpoint
-to get that value. Bulletproof.
+The iOS application (see `ios` folder) pushes the gimbal's value to the `m` nodejs service.
+The `m` client then polls the service's `/gimbal` endpoint to retrieve the value. mad hax.
